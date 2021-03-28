@@ -16,7 +16,11 @@ p {
     font-size: 24pt;
 }
 
-navbar-brand {
+nav .navbar-brand {
 	color: white;
 	font-weight: bold;
+}
+
+.navbar-brand{
+height: 1000px; /* Just an example height*/
 }
