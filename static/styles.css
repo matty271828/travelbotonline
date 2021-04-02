@@ -3,7 +3,6 @@
 }
 
 div {
-    text-align: center;
     margin-top: 50px;
 }
 
@@ -17,11 +16,30 @@ p {
 	float: right;
 }
 
-nav .navbar-brand {
-	color: white;
-	font-weight: bold;
-}
-
 image {
   float: left;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #3b88c3;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+  color: white;
+}
+
+li.branding {
+  font-size: 30px;
+  font-weight: bolder;
+  color: white;
 }
