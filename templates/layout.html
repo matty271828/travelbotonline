@@ -15,6 +15,9 @@
 
         <link href="/static/styles.css" rel="stylesheet">
 
+        <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
         <!-- https://favicon.io/emoji-favicons/up-right-arrow -->
         <link href="/static/favicon.ico" rel="icon">
 
@@ -22,13 +25,18 @@
     </head>
         <body>
             <!-- Image and text -->
-            <ul>
+            <ul class="topnav" id="myTopnav">
               <li style="margin-left:35px"><img src="static/favicon.ico" style="width:30px;height:30px;margin-left:15px;margin-top:5px;"></li>
               <li class="branding">ValueMe</li>	
 			  <li><a href="#">Home</a></li>
 			  <li><a href="#">News</a></li>
 			  <li><a href="#">Contact</a></li>
 			  <li><a href="#">About</a></li>
+
+              <li style="float:right"><a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+              </a></li>
+
               <li style="float:right;margin-right:50px;"><a href="#">Login</a></li>
               <li style="float:right"><a href="#">Register</a></li>
 			</ul>

@@ -20,7 +20,7 @@ image {
   float: left;
 }
 
-ul {
+ul.topnav {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -42,4 +42,13 @@ li.branding {
   font-size: 25px;
   font-weight: bolder;
   color: white;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 600px) {
+  li a:not(:first-child) {display: none;}
+  li a.icon {
+    float: right;
+    display: block;
+  }
 }
