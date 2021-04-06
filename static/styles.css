@@ -38,7 +38,7 @@
 
 .grid-container-footer > div {
   background-color: #3b88c3;
-  border: none;
-  text-align: center;
+  border: black;
+  text-align: right;
   font-size: 30px;
 }
