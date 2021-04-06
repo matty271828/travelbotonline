@@ -58,4 +58,17 @@ body {
   }
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  background-color: #FAF9F9;
+  padding: 10px;
+}
 
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  text-align: center;
+  font-size: 30px;
+}
