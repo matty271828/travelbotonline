@@ -1,6 +1,8 @@
+import os
+
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
-import os
+from tempfile import mkdtemp
 import psycopg2
 
 # Configure application
@@ -13,10 +15,10 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Ensure responses aren't cached
 @app.after_request
 def after_request(response):
-response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-response.headers["Expires"] = 0
-response.headers["Pragma"] = "no-cache"
-return response
+	response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+	response.headers["Expires"] = 0
+	response.headers["Pragma"] = "no-cache"
+	return response
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
@@ -25,9 +27,8 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Connect to database
-DATABASE_URL = os.environ['DATABASE_URL']
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
+# DATABASE_URL = os.environ['DATABASE_URL']
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 
 
