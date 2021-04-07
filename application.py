@@ -30,12 +30,15 @@ Session(app)
 # DATABASE_URL = os.environ['DATABASE_URL']
 # conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
-
-
-
 @app.route("/")
 def index():
-    return render_template("index.html")
+	"""Renders index page"""
+	return render_template("index.html")
+
+@app.route("/login")
+def login():
+	"""Log user in"""
+	return render_template("login.html")
 
 if __name__ == "__main__":
     app.run()
