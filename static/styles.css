@@ -42,3 +42,8 @@
   text-align: right;
   font-size: 30px;
 }
+
+.container-fluid {
+  padding-right:0;
+  padding-left:0;
+}
