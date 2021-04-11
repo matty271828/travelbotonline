@@ -35,13 +35,18 @@ def index():
 @app.route("/login")
 def login():
 	"""Log user in"""
-	sql = "SELECT * FROM test_table"
 
-	results = run_sql(sql)
-
-	print(results)
+	# SQL example code commented out for later use
+	# sql = "SELECT * FROM test_table"
+	# results = run_sql(sql)
+	# print(results)
 
 	return render_template("login.html")
+
+@app.route("/register")
+def register():
+	"""Register user account"""
+	return render_template("register.html")
 
 if __name__ == "__main__":
     app.run()

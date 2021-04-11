@@ -1,13 +1,17 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Home
+    Log In
 {% endblock %}
 
 {% block main %}
-
-<div>
-	<h2>Test value is test_value </h2>
-</div>
-
+    <form action="/login" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form>
 {% endblock %}
