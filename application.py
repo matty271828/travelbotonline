@@ -37,7 +37,18 @@ def index():
 @app.route("/login", methods=["GET", "POST"])
 def login():
 	"""Log user in"""
-	return render_template("login.html")
+	# User reached  via post
+	if request.method == 'POST':
+		# Ensure username was submitted
+		if not request.form.get("username"):
+			return apology("Must provide username", 400)
+
+		# Ensure password was submitted
+		elif not request.form.get("password"):
+			return apology("Must provide password", 400)
+
+	else:	
+		return render_template("login.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
