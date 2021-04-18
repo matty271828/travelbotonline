@@ -5,8 +5,10 @@ from flask_session import Session
 from tempfile import mkdtemp
 import psycopg2
 import psycopg2.extras as ext
-from run_sql import run_sql
+from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
+from werkzeug.security import check_password_hash, generate_password_hash
 
+from run_sql import run_sql
 from helpers import apology
 
 # Configure application
@@ -73,6 +75,30 @@ def register():
 			return apology("Password does not match password confirmation", 400)
 
 		else:
+			# Check for username already existing in database
+			sql = "SELECT DISTINCT username FROM users"
+			users = run_sql(sql)
+
+			for user in users:
+				if user['username'] == request.form.get("username"):
+					return apology("Username not available!", 400)
+				else:
+					pass
+
+			# Hash the users password
+			password_hash = generate_password_hash(request.form.get("password"))
+
+			# Find max previously used id number
+			sql = "SELECT id FROM users ORDER BY id ASC LIMIT 1"
+			prev_ids = run_sql(sql)
+			new_id = int(prev_ids[0][0]) + 1
+
+			# Insert new user into database
+			sql = "INSERT INTO users (id, username, hash) VALUES (%s,%s,%s)"
+			values = [new_id, request.form.get("username"), password_hash]
+			results = run_sql(sql, values)
+
+			# redirect 
 			return render_template("register.html")
 
 	# User reached via get
@@ -81,8 +107,3 @@ def register():
 
 if __name__ == "__main__":
     app.run()
-
-# SQL example code commented out for later use
-# sql = "SELECT * FROM test_table"
-# results = run_sql(sql)
-# print(results)
