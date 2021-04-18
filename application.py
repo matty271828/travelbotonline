@@ -88,10 +88,13 @@ def register():
 			# Hash the users password
 			password_hash = generate_password_hash(request.form.get("password"))
 
-			# Find max previously used id number
+			# Find max previously used id number and assign new number
 			sql = "SELECT id FROM users ORDER BY id ASC LIMIT 1"
 			prev_ids = run_sql(sql)
-			new_id = int(prev_ids[0][0]) + 1
+			if prev_ids == []:
+				new_id = 0
+			else:
+				new_id = int(prev_ids[0][0]) + 1
 
 			# Insert new user into database
 			sql = "INSERT INTO users (id, username, hash) VALUES (%s,%s,%s)"
