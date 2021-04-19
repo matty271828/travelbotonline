@@ -27,13 +27,17 @@
   <div class="topnav" id="myTopnav">
     <a class = "logo" href="#" style="margin-left:35px"><img src="static/images/vm2.png" style="width:120px;height:30px;margin-left:15px;margin-top:5px;"></a>
     <a href="/" class="active">Home</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
+    <a href="#contact" class="active">Contact</a>
+    {% if session.user_id %}
+    <a href="#universe">Universe</a>
+    <a href="#watchlist">Watchlist</a>
+    <a class = "rhs" href="#logout">Logout</a>
+    {% else %}
     <a class = "rhs" href="/login">Login</a>
     <a class = "rhs" href="/register">Register</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
+    {% endif %}
     </a>
   </div>
 
