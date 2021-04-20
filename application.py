@@ -74,13 +74,13 @@ def login():
 
 @app.route("/logout")
 def logout():
-    """Log user out"""
+	"""Log user out"""
 
-    # Forget any user_id
-    session.clear()
+	# Forget any user_id
+	session.clear()
 
-    # Redirect user to login form
-    return render_template("index.html")
+	# Redirect user to home page
+	return redirect("/")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
