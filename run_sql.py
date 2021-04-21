@@ -11,16 +11,18 @@ if ENV == 'dev':
     DATABASE_URL = os.environ.get('local_database_url')
 # Run production database
 else:
-    DATABASE_URL = os.environ.get('production_database_url')
+    DATABASE_URL = os.environ.get('DATABASE_URL')
 
 # Function to run SQL queries 
 def run_sql(sql, values = None):
     conn = None
     results = []
-
     try:
-        # conn=psycopg2.connect("dbname='lingua_snaps'")
-        conn = psycopg2.connect(DATABASE_URL)
+        if ENV == 'dev':
+            conn = psycopg2.connect(DATABASE_URL)
+        else:
+            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
         cur = conn.cursor(cursor_factory=ext.DictCursor)
         cur.execute(sql, values)
         conn.commit()
