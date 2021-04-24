@@ -1,7 +1,3 @@
 DROP TABLE users
 
-CREATE TABLE users (
-	id SERIAL PRIMARY KEY,
-	username TEXT,
-	hash TEXT,
-);
+CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT, hash TEXT);

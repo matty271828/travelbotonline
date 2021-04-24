@@ -5,7 +5,7 @@ import psycopg2.extras as ext
 
 
 # Set environment variable
-ENV = 'prod'
+ENV = 'dev'
 # Run local database
 if ENV == 'dev':
     DATABASE_URL = os.environ.get('local_database_url')

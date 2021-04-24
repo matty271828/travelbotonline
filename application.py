@@ -119,7 +119,7 @@ def register():
 			password_hash = generate_password_hash(request.form.get("password"))
 
 			# Find max previously used id number and assign new number
-			sql = "SELECT id FROM users ORDER BY id ASC LIMIT 1"
+			sql = "SELECT id FROM users ORDER BY id DESC LIMIT 1"
 			prev_ids = run_sql(sql)
 			if prev_ids == []:
 				new_id = 0
@@ -132,7 +132,7 @@ def register():
 			results = run_sql(sql, values)
 
 			# redirect 
-			return redirect("/")
+			return redirect("/login")
 
 	# User reached via get
 	else:
