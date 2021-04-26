@@ -59,11 +59,16 @@ def login():
 
 		print(rows)
 
-		# Ensure username exists and password is correct
-		if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
-			return apology("invalid username and/or password", 403)
+		# Ensure username exists 
+		if len(rows) != 1:
+			return apology("User does not exist", 403)
+		
+		# Ensure password is correct
+		if not check_password_hash(rows[0]["hash"], request.form.get("password")):
+			return apology("invalid password", 403)
 
 		# Remember which user has logged in
+		print(rows[0]["id"])
 		session["user_id"] = rows[0]["id"]
 
 		# Redirect user to home page
