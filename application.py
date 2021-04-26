@@ -143,5 +143,10 @@ def register():
 	else:
 		return render_template("register.html")
 
+@app.route("/browse", methods=["GET"])
+def browse():
+	"""Render browse page"""
+	return render_template("browse.html")
+
 if __name__ == "__main__":
     app.run()
