@@ -127,7 +127,7 @@ def register():
 			sql = "SELECT id FROM users ORDER BY id DESC LIMIT 1"
 			prev_ids = run_sql(sql)
 			if prev_ids == []:
-				new_id = 0
+				new_id = 1
 			else:
 				new_id = int(prev_ids[0][0]) + 1
 
