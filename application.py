@@ -10,6 +10,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from run_sql import run_sql
 from helpers import apology
+from contact_api import lookup
 
 # Configure application
 app = Flask(__name__)
