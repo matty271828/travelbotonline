@@ -57,7 +57,7 @@ def login():
 		values = [request.form.get("username")]
 		rows = run_sql(sql, values)
 
-		print(rows)
+		#print(rows)
 
 		# Ensure username exists 
 		if len(rows) != 1:
@@ -68,7 +68,7 @@ def login():
 			return apology("invalid password", 403)
 
 		# Remember which user has logged in
-		print(rows[0]["id"])
+		#print(rows[0]["id"])
 		session["user_id"] = rows[0]["id"]
 
 		# Redirect user to home page
@@ -146,7 +146,10 @@ def register():
 @app.route("/browse", methods=["GET"])
 def browse():
 	"""Render browse page"""
-	return render_template("browse.html")
+	# Dictionary of tickers
+	tickers = ["TSLA","AAPL","WKHS","FB","ACTC","MSFT","GOOG","PFE","NKE"]
+
+	return render_template("browse.html", tickers=tickers)
 
 if __name__ == "__main__":
     app.run()
