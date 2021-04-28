@@ -149,8 +149,8 @@ def browse():
 	# List of tickers
 	tickers = ["TSLA","AAPL","WKHS","FB","ACTC","MSFT","GOOG","PFE","NKE"]
 
-	# Dictionary to store detailed info on stocks
-	tickers_info_dict = {}
+	# List of stocks to be displayed, each element is an array containing stock info
+	stocks_list = []
 
 	# Populate a dictionary with ticker, name and current price for ticker
 	for ticker in tickers:
@@ -158,11 +158,11 @@ def browse():
 		stock_info = lookup(ticker)
 
 		# Add to dictionary
-		tickers_info_dict[ticker] = stock_info 
+		stocks_list.append(stock_info)
 
-	print(tickers_info_dict)
+	print(stocks_list)	
 
-	return render_template("browse.html", tickers_info_dict=tickers_info_dict)
+	return render_template("browse.html", stocks_list=stocks_list)
 
 if __name__ == "__main__":
     app.run()

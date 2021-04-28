@@ -12,9 +12,9 @@
 </div>
 
 <div class="card-container">
-    {% for ticker in tickers_info_dict %}
+    {% for stock in stocks_list %}
     <div class="card">
-        {{ ticker.name }}
+        <h4>{{ stock.name }}</h4>
     </div>
     {% endfor %}
   </div>
