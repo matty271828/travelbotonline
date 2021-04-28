@@ -15,7 +15,7 @@
     {% for stock in stocks_list %}
     <div class="card">
         <h4>{{ stock.name }}</h4>
-        <h4>{{ stock.price }}</h4>
+        <h4>{{ stock.price | usd }}</h4>
     </div>
     {% endfor %}
   </div>

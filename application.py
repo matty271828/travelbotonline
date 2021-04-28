@@ -16,7 +16,7 @@ from werkzeug.exceptions import default_exceptions, HTTPException, InternalServe
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from run_sql import run_sql
-from helpers import apology
+from helpers import apology, usd
 from contact_api import lookup
 
 # Configure application
@@ -32,6 +32,9 @@ def after_request(response):
 	response.headers["Expires"] = 0
 	response.headers["Pragma"] = "no-cache"
 	return response
+
+# Custom filter
+app.jinja_env.filters["usd"] = usd
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
