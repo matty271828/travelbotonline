@@ -146,10 +146,23 @@ def register():
 @app.route("/browse", methods=["GET"])
 def browse():
 	"""Render browse page"""
-	# Dictionary of tickers
+	# List of tickers
 	tickers = ["TSLA","AAPL","WKHS","FB","ACTC","MSFT","GOOG","PFE","NKE"]
 
-	return render_template("browse.html", tickers=tickers)
+	# Dictionary to store detailed info on stocks
+	tickers_info_dict = {}
+
+	# Populate a dictionary with ticker, name and current price for ticker
+	for ticker in tickers:
+		# Lookup ticker
+		stock_info = lookup(ticker)
+
+		# Add to dictionary
+		tickers_info_dict[ticker] = stock_info 
+
+	print(tickers_info_dict)
+
+	return render_template("browse.html", tickers_info_dict=tickers_info_dict)
 
 if __name__ == "__main__":
     app.run()

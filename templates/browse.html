@@ -12,8 +12,10 @@
 </div>
 
 <div class="card-container">
-    {% for ticker in tickers %}
-    <div class="card">{{ ticker }}</div>
+    {% for ticker in tickers_info_dict %}
+    <div class="card">
+        {{ ticker.name }}
+    </div>
     {% endfor %}
   </div>
 
