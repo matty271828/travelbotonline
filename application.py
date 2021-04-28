@@ -1,3 +1,10 @@
+"""
+ValueMe. Created by Matthew Maclean, 2021. 
+
+The basic structure of this program expands upon the example provided by CS50x Problem Set 9 Finance. 
+Many of the functions expand upon the examples provided. Throughout this program, where functions are 
+taken directly, credit is given. 
+"""
 import os
 
 from flask import Flask, flash, redirect, render_template, request, session
@@ -77,6 +84,7 @@ def login():
 	else:	
 		return render_template("login.html")
 
+# Thanks to CS50
 @app.route("/logout")
 def logout():
 	"""Log user out"""

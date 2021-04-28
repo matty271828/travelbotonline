@@ -3,6 +3,7 @@ import os
 from flask import redirect, render_template, request, session
 from functools import wraps
 
+# Thanks to CS50
 def apology(message, code=400):
     """Render message as an apology to user."""
     def escape(s):
