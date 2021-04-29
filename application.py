@@ -81,8 +81,8 @@ def login():
 		#print(rows[0]["id"])
 		session["user_id"] = rows[0]["id"]
 
-		# Redirect user to home page
-		return redirect("/")
+		# Redirect user to browse page
+		return redirect("/browse")
 
 	else:	
 		return render_template("login.html")
