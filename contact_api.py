@@ -5,17 +5,27 @@ import urllib.parse
 from flask import redirect, render_template, request, session
 from functools import wraps
 
+# Manually change API_environment variable here to access either production or sandbox API
+# Configure API to access real data 
+API_environment = 'sandbox'
+if API_environment == 'prod':
+    base_url = "https://cloud.iexapis.com/stable"
+    api_key = os.environ.get("IEX_API_KEY")
+# Configure for sandbox data
+else:
+    base_url = "https://sandbox.iexapis.com/stable"
+    api_key = os.environ.get("IEX_TEST_KEY")
+    os.environ['IEX_SANDBOX'] = 'enable'
+
 def lookup(symbol):
     """Look up quote for symbol."""
-
-    # Retrieve API key
-    api_key = os.environ.get("IEX_API_KEY")
-
     # Contact API
     try:
-        url = f"https://cloud.iexapis.com/stable/stock/{urllib.parse.quote_plus(symbol)}/quote?token={api_key}"
+        url = f"{base_url}/stock/{urllib.parse.quote_plus(symbol)}/quote?token={api_key}"
+        print(api_key)
         response = requests.get(url)
         response.raise_for_status()
+
     except requests.RequestException:
         print(f'API connection error: {response.status_code}')
         return None
