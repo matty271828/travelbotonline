@@ -19,7 +19,7 @@ else:
 
 # Thanks to CS50 for core code of this function
 def make_request(get_parameter):
-    """Contact API, input IEX get request parameter and output json data"""
+    """Contact API, input IEX get_request parameter and output json data"""
     # Contact API
     try:
         url = f"{base_url}{get_parameter}?token={api_key}"
