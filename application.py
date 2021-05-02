@@ -17,7 +17,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from run_sql import run_sql
 from helpers import apology, usd
-from contact_api import lookup
+from contact_api import lookup, retrieve_symbols
 
 # Configure application
 app = Flask(__name__)
@@ -157,6 +157,9 @@ def register():
 @app.route("/browse", methods=["GET"])
 def browse():
 	"""Render browse page"""
+	# Retrieve symbols
+	retrieve_symbols()
+
 	# List of tickers
 	tickers = ["TSLA","AAPL","WKHS","FB","ACTC","MSFT","GOOG","PFE","NKE"]
 
