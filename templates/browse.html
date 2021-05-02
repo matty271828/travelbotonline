@@ -15,6 +15,7 @@
     <div class="row">
     {% for stock in stocks_list %}  
     <div class="col-sm-6 card">
+        <h4>{{ stock.symbol }}</h4>
         <h4>{{ stock.name }}</h4>
         <h4>{{ stock.price | usd }}</h4>
     </div>

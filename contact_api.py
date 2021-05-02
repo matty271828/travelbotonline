@@ -44,36 +44,34 @@ def lookup(symbol):
     # Format get_parameter
     get_parameter = f"/stock/{urllib.parse.quote_plus(symbol)}/quote"
 
-    print(get_parameter)
-
     # Contact API
     quote = make_request(get_parameter)
 
     # Return data
-    return {
-        "name": quote["companyName"],
-        "price": float(quote["latestPrice"]),
-        "symbol": quote["symbol"]
-    }
+    try:
+        return {
+            "name": quote["companyName"],
+            "price": float(quote["latestPrice"]),
+            "symbol": quote["symbol"]
+        }
+    
+    except (KeyError, TypeError, ValueError):
+        print("Error")
+        return None
 
 def retrieve_symbols():
     """Retrieve all symbols supported by IEX Cloud for intra-day updates"""
+    # Format get_parameter
+    get_parameter = f"/ref-data/symbols"
+
     # Contact API
-    try:
-        url = f"{base_url}/ref-data/symbols?token={api_key}"
-        response = requests.get(url)
-        response.raise_for_status()
+    symbols_dict = make_request(get_parameter)
 
-    except requests.RequestException:
-        print(f'API connection error: {response.status_code}')
-        return None
-
-    # Parse response
-    try:
-        symbols = response.json()
-        print("test")
-        return None
-
-    except (KeyError, TypeError, ValueError):
-        print('Error')
-        return None
+    # Collect tickers only (other data is included in json response)
+    # Refer to IEX documentation for json output format
+    tickers = []
+    for symbol in symbols_dict:
+        tickers.append(symbol["symbol"])
+        
+    # Return data
+    return tickers

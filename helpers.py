@@ -21,4 +21,7 @@ def apology(message, code=400):
 # Thanks to CS50
 def usd(value):
     """Format value as USD."""
-    return f"${value:,.2f}"
+    try:
+        return f"${value:,.2f}"
+    except:
+        return None
