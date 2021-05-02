@@ -163,21 +163,15 @@ def browse():
 	# List of stocks to be displayed, each element is an array containing stock info
 	stocks_list = []
 
-	# Populate a dictionary with ticker, name and current price for ticker
+	# Populate list with ticker, name and current price for ticker
 	i = 0
 	for ticker in tickers:
-		if i < 50:
-			# Lookup ticker
+		if i < 20:
 			stock_info = lookup(ticker)
-			# Add to dictionary
 			stocks_list.append(stock_info)
 			i = i + 1
-			print(i)
-
 		else:
 			break
-
-	print(stocks_list)
 
 	return render_template("browse.html", stocks_list=stocks_list)
 
