@@ -158,7 +158,7 @@ def register():
 def browse():
 	"""Render browse page"""
 	# Retrieve symbols
-	retrieve_symbols()
+
 
 	# List of tickers
 	tickers = ["TSLA","AAPL","WKHS","FB","ACTC","MSFT","GOOG","PFE","NKE"]

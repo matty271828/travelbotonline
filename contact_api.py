@@ -17,12 +17,12 @@ else:
     api_key = os.environ.get("IEX_TEST_KEY")
     os.environ['IEX_SANDBOX'] = 'enable'
 
-# Thanks to CS50
-def lookup(symbol):
-    """Look up quote for symbol."""
+# Thanks to CS50 for core code of this function
+def make_request(get_parameter):
+    """Contact API, input IEX get request parameter and output json data"""
     # Contact API
     try:
-        url = f"{base_url}/stock/{urllib.parse.quote_plus(symbol)}/quote?token={api_key}"
+        url = f"{base_url}{get_parameter}?token={api_key}"
         response = requests.get(url)
         response.raise_for_status()
 
@@ -32,15 +32,29 @@ def lookup(symbol):
 
     # Parse response
     try:
-        quote = response.json()
-        return {
-            "name": quote["companyName"],
-            "price": float(quote["latestPrice"]),
-            "symbol": quote["symbol"]
-        }
+        return response.json()
+    
     except (KeyError, TypeError, ValueError):
-        print('Error')
+        print('Key, Type or Value Error has occurred')
         return None
+
+# Lookup quotation for symbol
+def lookup(symbol):
+    """Look up quote for symbol."""
+    # Format get_parameter
+    get_parameter = f"/stock/{urllib.parse.quote_plus(symbol)}/quote"
+
+    print(get_parameter)
+
+    # Contact API
+    quote = make_request(get_parameter)
+
+    # Return data
+    return {
+        "name": quote["companyName"],
+        "price": float(quote["latestPrice"]),
+        "symbol": quote["symbol"]
+    }
 
 def retrieve_symbols():
     """Retrieve all symbols supported by IEX Cloud for intra-day updates"""
