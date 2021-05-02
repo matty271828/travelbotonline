@@ -33,12 +33,12 @@
     <a href="/browse">Browse</a>
     <a href="#watchlist">Watchlist</a>
     <a class = "rhs" href="/logout">Logout</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <a href="javascript:void(0);" class="icon" onclick="dropdownFunction()">
       <i class="fa fa-bars"></i>
     {% else %}
     <a class = "rhs" href="/login">Login</a>
     <a class = "rhs" href="/register">Register</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <a href="javascript:void(0);" class="icon" onclick="dropdownFunction()">
       <i class="fa fa-bars"></i>
     {% endif %}
     </a>
@@ -49,7 +49,7 @@
   </main>
 
   <script>
-  function myFunction() {
+  function dropdownFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
       x.className += " responsive";
