@@ -57,6 +57,19 @@
       x.className = "topnav";
     }
   }
+
+  window.onscroll = function() {stickyFunction()};
+
+  var browsebar = document.getElementById("browsebar");
+  var sticky = browsebar.offsetTop;
+
+  function stickyFunction() {
+    if (window.pageYOffset >= sticky) {
+      browsebar.classList.add("sticky")
+    } else {
+      browsebar.classList.remove("sticky");
+    }
+  }
   </script>
 </body>
 </html>

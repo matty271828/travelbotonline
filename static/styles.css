@@ -81,6 +81,18 @@ main img
     transform: translate(-50%, -50%);
 }
 
+.browsebar {
+    overflow: hidden;
+    background-color: #3b88c3;
+    font-weight: lighter;
+    z-index: 10;
+}
+
+.browse-item {
+    color: black;
+    text-align: center;
+    z-index: 11;
+}
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
   position: fixed;
