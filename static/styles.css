@@ -83,7 +83,7 @@ main img
 
 .browsebar {
     overflow: hidden;
-    background-color: #3b88c3;
+    background-color: lightgray;
     font-weight: lighter;
     z-index: 10;
 }
