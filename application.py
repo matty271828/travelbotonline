@@ -186,6 +186,15 @@ def watchlist():
 	"""Render browse page"""
 	# User reached via POST
 	if request.method == "POST":
+		# Ticker 
+		ticker = request.form.get("symbol")
+
+		# Insert into database
+		sql = "INSERT INTO watchlist_requests (ticker, user_id) VALUES (%s, %s)"
+		values = [ticker, session["user_id"]]
+		results = run_sql(sql, values)
+
+		# Return to watchlist page
 		return render_template("watchlist.html")
 
 	# Else
