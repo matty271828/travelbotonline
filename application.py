@@ -158,14 +158,8 @@ def register():
 @app.route("/browse", methods=["GET"])
 def browse():
 	"""Render browse page"""
-	# Test time
-	start_time = time.time()
 	# Retrieve list of tickers
 	tickers = retrieve_symbols()
-	# Test time
-	print(f"ticker list loaded in {time.time() - start_time}s")
-
-
 
 	# List of stocks to be displayed, each element is an array containing stock info
 	stocks_list = []
@@ -185,26 +179,7 @@ def browse():
 		else:
 			break
 
-	# Test time
-	stock_load_time = time.time() - start_time
-	est_load_time = int(4000) * (stock_load_time/j)
-	print(f"stock info loaded in {stock_load_time}s")
-	print(f"Estimated time to load 4000 stocks = {est_load_time}s")
-	print(f"Avg. API contact = {stock_load_time / j}s")
-
 	return render_template("browse.html", stocks_list=stocks_list)
-
-@app.route("/watchlist", methods=["GET","POST"])
-def watchlist():
-	"""Render watchlist page"""
-	# User reached via POST
-	if request.method == "POST":
-		return render_template("watchlist.html")
-
-	# User reached via GET
-	else:
-		# Display watchlist page
-		return render_template("watchlist.html")
 
 if __name__ == "__main__":
     app.run()
