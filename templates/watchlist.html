@@ -9,8 +9,8 @@
     <div class="form-group" style = "margin-top: 100px;">
         <select autocomplete="off" autofocus class="form-control" name="symbol" type="select">
             <option value="Symbol" disabled selected>Symbol</option>
-            {% for stock in stocks %}
-            <option value = "{{ stock.stock }}">{{ stock.stock }}</option>
+            {% for ticker in tickers %}
+            <option value = "{{ ticker }}">{{ ticker }}</option>
             {% endfor %}
         </select>
     </div>
