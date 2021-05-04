@@ -169,7 +169,7 @@ def browse():
 	# Populate list with ticker, name and current price for ticker
 	i = 0
 	# Number of tickers to load
-	j = 20
+	j = 6
 
 	for ticker in tickers:
 		if i < j:
@@ -180,6 +180,19 @@ def browse():
 			break
 
 	return render_template("browse.html", stocks_list=stocks_list)
+
+@app.route("/watchlist", methods=["GET", "POST"])
+def watchlist():
+	"""Render browse page"""
+	# User reached via POST
+	if request.method == "POST":
+		return render_template("watchlist.html")
+
+	# Else
+	else:
+		return	render_template("watchlist.html")
+
+
 
 if __name__ == "__main__":
     app.run()
