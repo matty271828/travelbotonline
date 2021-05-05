@@ -163,10 +163,6 @@ def browse():
 	values = [session["user_id"]]
 	tickers = run_sql(sql, values)
 
-	print(tickers)
-	for ticker in tickers:
-		print(ticker[0])
-
 	# List of stocks to be displayed, each element is an array containing stock info
 	stocks_list = []
 
@@ -191,7 +187,7 @@ def watchlist():
 		results = run_sql(sql, values)
 
 		# Return to watchlist page
-		return render_template("watchlist.html")
+		return redirect("/watchlist")
 
 	# Else
 	else:
