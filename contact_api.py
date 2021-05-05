@@ -7,7 +7,7 @@ from functools import wraps
 
 # Manually change API_environment variable here to access either production or sandbox API
 # Configure API to access real data 
-API_environment = 'sandbox'
+API_environment = 'prod'
 if API_environment == 'prod':
     base_url = "https://cloud.iexapis.com/stable"
     api_key = os.environ.get("IEX_API_KEY")
