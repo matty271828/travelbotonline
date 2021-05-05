@@ -159,25 +159,21 @@ def register():
 def browse():
 	"""Render browse page"""
 	# Retrieve list of tickers
-	tickers = retrieve_symbols()
+	sql = "SELECT ticker FROM watchlist_requests WHERE user_id = (%s)"
+	values = [session["user_id"]]
+	tickers = run_sql(sql, values)
+
+	print(tickers)
+	for ticker in tickers:
+		print(ticker[0])
 
 	# List of stocks to be displayed, each element is an array containing stock info
 	stocks_list = []
 
-	# Test time
-	start_time = time.time()
-	# Populate list with ticker, name and current price for ticker
-	i = 0
-	# Number of tickers to load
-	j = 6
-
+	# Contact API
 	for ticker in tickers:
-		if i < j:
-			stock_info = lookup(ticker)
-			stocks_list.append(stock_info)
-			i = i + 1
-		else:
-			break
+		stock_info = lookup(ticker[0])
+		stocks_list.append(stock_info)
 
 	return render_template("browse.html", stocks_list=stocks_list)
 
@@ -204,8 +200,6 @@ def watchlist():
 
 		# Render template
 		return	render_template("watchlist.html", tickers=tickers)
-
-
 
 if __name__ == "__main__":
     app.run()
