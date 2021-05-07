@@ -191,11 +191,8 @@ def watchlist():
 
 	# Else
 	else:
-		# Query API for all stocks
-		tickers = retrieve_symbols()
-
 		# Render template
-		return	render_template("watchlist.html", tickers=tickers)
+		return	render_template("watchlist.html")
 
 if __name__ == "__main__":
     app.run()
