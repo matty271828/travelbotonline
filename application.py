@@ -1,5 +1,5 @@
 """
-ValueMe. Created by Matthew Maclean, 2021. 
+travelbotonline. Created by Matthew Maclean, 2021. 
 
 The basic structure of this program expands upon the example provided by CS50x Problem Set 9 Finance. 
 Many of the functions expand upon the examples provided. Throughout this program, where functions are 
@@ -18,7 +18,6 @@ import time
 
 from run_sql import run_sql
 from helpers import apology, usd
-from contact_api import lookup, retrieve_symbols
 
 # Configure application
 app = Flask(__name__)
