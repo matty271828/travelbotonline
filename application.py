@@ -52,9 +52,9 @@ def browse():
 	# Retrieve list of tickers
 
 	# List of stocks to be displayed, each element is an array containing stock info
-	stocks_list = ['test','test','test']
+	flights_list = ['test','test','test']
 
-	return render_template("browse.html", stocks_list=stocks_list)
+	return render_template("browse.html", flights_list=flights_list)
 
 if __name__ == "__main__":
     app.run()
