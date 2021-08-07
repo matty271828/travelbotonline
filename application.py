@@ -158,17 +158,9 @@ def register():
 def browse():
 	"""Render browse page"""
 	# Retrieve list of tickers
-	sql = "SELECT ticker FROM watchlist_requests WHERE user_id = (%s)"
-	values = [session["user_id"]]
-	tickers = run_sql(sql, values)
 
 	# List of stocks to be displayed, each element is an array containing stock info
-	stocks_list = []
-
-	# Contact API
-	for ticker in tickers:
-		stock_info = lookup(ticker[0])
-		stocks_list.append(stock_info)
+	stocks_list = ['test','test','test']
 
 	return render_template("browse.html", stocks_list=stocks_list)
 
