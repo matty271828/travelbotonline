@@ -19,9 +19,9 @@ def apology(message, code=400):
     return render_template("apology.html", top=code, bottom=escape(message)), code
 
 # Thanks to CS50
-def usd(value):
-    """Format value as USD."""
+def gbp(value):
+    """Format value as GBP."""
     try:
-        return f"${value:,.2f}"
+        return f"£{value:,.2f}"
     except:
         return None

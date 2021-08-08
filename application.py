@@ -17,7 +17,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 import time
 
 from run_sql import run_sql
-from helpers import apology, usd
+from helpers import apology, gbp
 
 # Configure application
 app = Flask(__name__)
@@ -34,7 +34,7 @@ def after_request(response):
 	return response
 
 # Custom filter
-app.jinja_env.filters["usd"] = usd
+app.jinja_env.filters["gbp"] = gbp
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
@@ -49,10 +49,28 @@ def index():
 @app.route("/browse", methods=["GET"])
 def browse():
 	"""Render browse page"""
-	# Retrieve list of tickers
+	# Retrieve list of flights to be displayed
+	sql = "SELECT * FROM best_flights"
+	flights = run_sql(sql)
+	
+	# List of flights to be displayed, each element is an array containing stock info
+	flights_list = []
 
-	# List of stocks to be displayed, each element is an array containing stock info
-	flights_list = ['test','test','test']
+	# Add results into flights_list
+	for flight in flights:
+		flight_dict = {}
+
+		flight_dict['source'] = flight[1]
+		flight_dict['dest'] = flight[2]
+		flight_dict['price'] = flight[3]
+		flight_dict['outdate'] = flight[4]
+		flight_dict['indate'] = flight[5]
+		flight_dict['origin_id'] = flight[6]
+		flight_dict['dest_id'] = flight[7]
+
+		flights_list.append(flight_dict)
+
+	print(flights_list)
 
 	return render_template("browse.html", flights_list=flights_list)
 

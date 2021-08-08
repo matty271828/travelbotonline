@@ -13,8 +13,9 @@
     <div class="row">
     {% for flight in flights_list %}  
     <div class="col-sm-6 card">
-        <h4>{{ flight }}</h4>
-
+        <h4>{{ flight.source }}</h4>
+        <h4>{{ flight.dest }}</h4>
+        <h4>{{ flight.price | gbp }}</h4>
     </div>
     {% endfor %}
     </div>

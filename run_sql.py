@@ -6,11 +6,10 @@ import psycopg2.extras as ext
 
 # Set environment variable
 # Set manually as 'dev' to run from local database
-ENV = 'prod'
+ENV = 'dev'
 # Run local database
-# TODO Create local database when needed for development
 if ENV == 'dev':
-    DATABASE_URL = os.environ.get('travelbotonline_local_database_url')
+    DATABASE_URL = os.environ.get('travelbot_local_database_url')
 # Run production database
 else:
     DATABASE_URL = os.environ.get('HEROKU_POSTGRESQL_SILVER_URL')
