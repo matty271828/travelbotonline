@@ -13,9 +13,37 @@
     <div class="row">
     {% for flight in flights_list %}  
     <div class="col-sm-6 card">
-        <h4>{{ flight.source }}</h4>
-        <h4>{{ flight.dest }}</h4>
-        <h4>{{ flight.price | gbp }}</h4>
+        <table>
+            <tr>
+                <th><h4>{{ flight.source }}</h4></th>
+                <th></th>
+                <th><h4>{{ flight.dest }}</h4></th>
+            </tr>
+
+            <tr>
+                <td><h4>{{ flight.origin_id }}</h4></td>
+                <td></td>
+                <td><h4>{{ flight.dest_id }}</h4></td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td><h6>Outward date:</h6></td>
+                <td><h6>{{ flight.outdate }}</h6></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td><h6>Return date:</h6></td>
+                <td><h6>{{ flight.indate }}</h6></td>
+                <td><h4>{{ flight.price | gbp }}</h4></td>
+            </tr>
+        </table>
     </div>
     {% endfor %}
     </div>
