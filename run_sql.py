@@ -12,7 +12,7 @@ if ENV == 'dev':
     DATABASE_URL = os.environ.get('travelbot_local_database_url')
 # Run production database
 else:
-    DATABASE_URL = os.environ.get('HEROKU_POSTGRESQL_SILVER_URL')
+    DATABASE_URL = os.environ.get('HEROKU_POSTGRESQL_BLUE_URL')
 
 # Function to run SQL queries 
 def run_sql(sql, values = None):
